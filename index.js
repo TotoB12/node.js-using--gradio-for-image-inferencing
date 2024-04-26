@@ -21,7 +21,7 @@ async function go(prompt) {
       false, // negative prompt?
       false, // prompt 2?
       false, // negative prompt 2?
-      0, // seed
+      Math.floor(Math.random() * 99999999999999), // seed
       1024, // width
       1024, // height
       5, // base guidance scale
