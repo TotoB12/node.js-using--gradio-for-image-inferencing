@@ -8,11 +8,11 @@ global.window = {
 };
 
 async function go(prompt) {
-  const { client } = await import("@gradio/client");
+  const { Client } = await import("@gradio/client");
   global.EventSource = require("eventsource");
-  
-  const app = await client("hysts/SDXL");
-  // const app = await client("ByteDance/Hyper-SDXL-1Step-T2I");
+
+  const app = await Client.connect("https://hysts-SDXL.hf.space/run");
+  // const app = await Client.connect("ByteDance/Hyper-SDXL-1Step-T2I");
   const result = await app.predict("/run", [
       prompt, // prompt
       "Hello!!", // negative prompt
@@ -28,7 +28,7 @@ async function go(prompt) {
       5, // refiner guidance scale
       25, // base inference steps
       25, // refiner inference steps
-      true, // refiner?
+      false, // refiner?
   ]);
   // const result = await app.predict("/process_image", [
   //   1, // number of images
